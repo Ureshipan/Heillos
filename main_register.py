@@ -9,8 +9,7 @@ from data.users import User
 from data.login_form import LoginForm
 from data.register import RegisterForm
 
-
-photos = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', ]
+photos = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
 
 scetch = ['scetchbook/ (1).jpg', 'scetchbook/ (2).jpg', 'scetchbook/ (3).jpg', 'scetchbook/ (4).jpg',
           'scetchbook/ (5).jpg', 'scetchbook/ (6).jpg', 'scetchbook/ (7).jpg', 'scetchbook/ (8).jpg',
@@ -23,6 +22,39 @@ scetch = ['scetchbook/ (1).jpg', 'scetchbook/ (2).jpg', 'scetchbook/ (3).jpg', '
           'scetchbook/ (33).jpg', 'scetchbook/ (34).jpg', 'scetchbook/ (35).jpg', 'scetchbook/ (36).jpg',
           'scetchbook/ (37).jpg', 'scetchbook/ (38).jpg', 'scetchbook/ (39).jpg', 'scetchbook/ (40).jpg']
 
+zozi = ['2021/0.jpg', '2021/1.jpg']
+
+zozo = ['2020/ (1).jpg', '2020/ (2).jpg', '2020/ (3).jpg', '2020/ (4).jpg', '2020/ (5).jpg', '2020/ (6).jpg',
+        '2020/ (7).jpg', '2020/ (8).jpg', '2020/ (9).jpg', '2020/ (10).jpg', '2020/ (11).jpg', '2020/ (12).jpg',
+        '2020/ (13).jpg', '2020/ (14).jpg', '2020/ (15).jpg', '2020/ (16).jpg', '2020/ (17).jpg', '2020/ (18).jpg',
+        '2020/ (19).jpg', '2020/ (20).jpg', '2020/ (21).jpg', '2020/ (22).jpg', '2020/ (23).jpg', '2020/ (24).jpg',
+        '2020/ (25).jpg', '2020/ (26).jpg', '2020/ (27).jpg', '2020/ (28).jpg', '2020/ (29).jpg', '2020/ (30).jpg',
+        '2020/ (31).jpg', '2020/ (32).jpg', '2020/ (33).jpg', '2020/ (34).jpg', '2020/ (35).jpg', '2020/ (36).jpg',
+        '2020/ (37).jpg', '2020/ (38).jpg', '2020/ (39).jpg', '2020/ (40).jpg', '2020/ (41).jpg', '2020/ (42).jpg',
+        '2020/ (43).jpg', '2020/ (44).jpg', '2020/ (45).jpg', '2020/ (46).jpg', '2020/ (47).jpg']
+
+zoij = ['2019/ (1).jpg', '2019/ (2).jpg', '2019/ (3).jpg', '2019/ (4).jpg',
+        '2019/ (5).jpg', '2019/ (6).jpg', '2019/ (7).jpg', '2019/ (8).jpg',
+        '2019/ (9).jpg', '2019/ (10).jpg', '2019/ (11).jpg', '2019/ (12).jpg',
+        '2019/ (13).jpg', '2019/ (14).jpg', '2019/ (15).jpg', '2019/ (16).jpg',
+        '2019/ (17).jpg', '2019/ (18).jpg', '2019/ (19).jpg', '2019/ (20).jpg',
+        '2019/ (21).jpg', '2019/ (22).jpg', '2019/ (23).jpg', '2019/ (24).jpg']
+
+zoib = ['2018/ (1).jpg', '2018/ (2).jpg', '2018/ (3).jpg', '2018/ (4).jpg', '2018/ (5).jpg', '2018/ (6).jpg',
+        '2018/ (7).jpg', '2018/ (8).jpg', '2018/ (9).jpg', '2018/ (10).jpg', '2018/ (11).jpg', '2018/ (12).jpg',
+        '2018/ (13).jpg', '2018/ (14).jpg', '2018/ (15).jpg', '2018/ (16).jpg', '2018/ (17).jpg', '2018/ (18).jpg',
+        '2018/ (19).jpg', '2018/ (20).jpg', '2018/ (21).jpg', '2018/ (22).jpg', '2018/ (23).jpg', '2018/ (24).jpg']
+
+zoif = ['2017/ (1).jpg', '2017/ (2).jpg', '2017/ (3).jpg', '2017/ (4).jpg', '2017/ (5).jpg', '2017/ (6).jpg',
+        '2017/ (7).jpg', '2017/ (8).jpg', '2017/ (9).jpg', '2017/ (10).jpg', '2017/ (11).jpg', '2017/ (12).jpg',
+        '2017/ (13).jpg', '2017/ (14).jpg', '2017/ (15).jpg', '2017/ (16).jpg', '2017/ (17).jpg', '2017/ (18).jpg',
+        '2017/ (19).jpg', '2017/ (20).jpg', '2017/ (21).jpg']
+
+zois = ['2016/ (1).jpg', '2016/ (2).jpg', '2016/ (3).jpg', '2016/ (4).jpg', '2016/ (5).jpg', '2016/ (6).jpg',
+        '2016/ (7).jpg', '2016/ (8).jpg', '2016/ (9).jpg', '2016/ (10).jpg', '2016/ (11).jpg', '2016/ (12).jpg',
+        '2016/ (13).jpg', '2016/ (14).jpg', '2016/ (15).jpg', '2016/ (16).jpg', '2016/ (17).jpg', '2016/ (18).jpg',
+        '2016/ (19).jpg', '2016/ (20).jpg', '2016/ (21).jpg', '2016/ (22).jpg', '2016/ (23).jpg', '2016/ (24).jpg',
+        '2016/ (25).jpg', '2016/ (26).jpg']
 
 app = Flask(__name__)
 
@@ -43,6 +75,7 @@ def load_user(user_id):
 def main():
     global photos
     return render_template('main.html', photos=photos, title="Heillos")
+
 
 def name(session, idd):
     for i in session.query(User).filter(User.id == idd):
@@ -82,7 +115,7 @@ def reqister():
 @app.route('/login', methods=['GET', 'POST'])
 def lin():
     form = LoginForm()
-    if request.method == "POST":#form.validate_on_submit():
+    if request.method == "POST":  # form.validate_on_submit():
         db_sess = db_session.create_session()
         user = db_sess.query(User).filter(User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
@@ -108,15 +141,59 @@ def albums():
     global photos
     return render_template('albums_list.html', title="Heillos")
 
+
 @app.route('/scetchbook', methods=['GET', 'POST'])
-def album():
+def scetchbook():
     if not current_user.is_authenticated:
         return redirect('/need_login')
     return render_template('album_present.html', photos=scetch, title="Heillos")
 
+
+@app.route('/2021', methods=['GET', 'POST'])
+def z1():
+    if not current_user.is_authenticated:
+        return redirect('/need_login')
+    return render_template('album_present.html', photos=zozi, title="Heillos")
+
+
+@app.route('/2020', methods=['GET', 'POST'])
+def z2():
+    if not current_user.is_authenticated:
+        return redirect('/need_login')
+    return render_template('album_present.html', photos=zozo, title="Heillos")
+
+@app.route('/2019', methods=['GET', 'POST'])
+def z3():
+    if not current_user.is_authenticated:
+        return redirect('/need_login')
+    return render_template('album_present.html', photos=zoij, title="Heillos")
+
+
+@app.route('/2018', methods=['GET', 'POST'])
+def z4():
+    if not current_user.is_authenticated:
+        return redirect('/need_login')
+    return render_template('album_present.html', photos=zoib, title="Heillos")
+
+
+@app.route('/2017', methods=['GET', 'POST'])
+def z5():
+    if not current_user.is_authenticated:
+        return redirect('/need_login')
+    return render_template('album_present.html', photos=zoif, title="Heillos")
+
+
+@app.route('/2016', methods=['GET', 'POST'])
+def z6():
+    if not current_user.is_authenticated:
+        return redirect('/need_login')
+    return render_template('album_present.html', photos=zois, title="Heillos")
+
+
 @app.route('/need_login', methods=['GET', 'POST'])
 def need_log():
     return render_template('need_login.html', title='Авторизуйтесь')
+
 
 def main():
     db_session.global_init("db/blogs.db")
