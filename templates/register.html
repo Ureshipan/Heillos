@@ -3,8 +3,10 @@
 {% block content %}
 <h1>Register Form</h1>
 
+<form action="" method="post">
     {{ form.hidden_tag() }}
     {{ form.csrf_token }}
+    {{message}}
     <p>
         {{ form.email.label }}<br>
         {{ form.email(class="form-control", type="email") }}<br>
@@ -86,8 +88,7 @@
     </p>
     {% endfor %}
     </p>
-<form action="" method="post">
     <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
-    {{message}}
+
 </form>
 {% endblock %}

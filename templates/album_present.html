@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4><font color="black">{{name}}</font></h4>
+{% for el in photos %}
+    <div>
+        <p style="text-align: center";><img src="/static/img/{{el}}" width="100%" height="100%"></p>
+    </div>
+{% endfor %}
+{% endblock %}

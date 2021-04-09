@@ -25,9 +25,9 @@
     {% endfor %}
     </p>
     <p>
-        {{ form.surname.label }}<br>
-        {{ form.surname(class="form-control") }}<br>
-        {% for error in form.surname.errors %}
+        {{ form.password_again.label }}<br>
+        {{ form.password_again(class="form-control", type="password") }}<br>
+        {% for error in form.password_again.errors %}
     <p class="alert alert-danger" role="alert">
         {{ error }}
     </p>
@@ -46,33 +46,6 @@
         {{ form.age.label }}<br>
         {{ form.age(class="form-control") }}<br>
         {% for error in form.age.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.position.label }}<br>
-        {{ form.position(class="form-control") }}<br>
-        {% for error in form.position.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.speciality.label }}<br>
-        {{ form.speciality(class="form-control") }}<br>
-        {% for error in form.speciality.errors %}
-    <p class="alert alert-danger" role="alert">
-        {{ error }}
-    </p>
-    {% endfor %}
-    </p>
-    <p>
-        {{ form.address.label }}<br>
-        {{ form.address(class="form-control") }}<br>
-        {% for error in form.address.errors %}
     <p class="alert alert-danger" role="alert">
         {{ error }}
     </p>
