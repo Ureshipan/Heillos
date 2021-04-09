@@ -12,7 +12,7 @@
 
 </style>
 
-<a href="https://vk.com/heillos"><h4><font color="black">Heillos в VK</font></h4></a>
+<div><a href="https://vk.com/heillos"><h4><font color="black">Heillos в VK</font></h4></a></div>
 
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -32,11 +32,11 @@
         {% for el in photos %}
         {% if loop.first %}
         <div class="carousel-item active">
-            <img src="/static/img/{{el}}" class="d-block">
+            <img src="/static/img/{{el}}" class="d-block" width="100%">
         </div>
         {% else %}
         <div class="carousel-item">
-            <img src="/static/img/{{el}}" class="d-block">
+            <img src="/static/img/{{el}}" class="d-block" width="100%">
         </div>
         {% endif %}
         {% endfor %}

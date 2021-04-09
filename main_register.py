@@ -9,7 +9,7 @@ from data.users import User
 from data.login_form import LoginForm
 from data.register import RegisterForm
 
-photos = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']
+photos = ['main/0.jpg', 'main/1.jpg', 'main/2.jpg', 'main/3.jpg', 'main/4.jpg', 'main/5.jpg']
 
 scetch = ['scetchbook/ (1).jpg', 'scetchbook/ (2).jpg', 'scetchbook/ (3).jpg', 'scetchbook/ (4).jpg',
           'scetchbook/ (5).jpg', 'scetchbook/ (6).jpg', 'scetchbook/ (7).jpg', 'scetchbook/ (8).jpg',
