@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, make_response, session
 from flask_login import LoginManager, login_user
 from werkzeug.utils import redirect
+import flask
 
 import datetime
 from data import db_session
@@ -16,10 +17,12 @@ login_manager.init_app(app)
 
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
+
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.query(User).get(user_id)
+
 
 @app.route('/')
 @app.route('/index')
@@ -35,10 +38,9 @@ def journal():
                      i.is_finished))
     session.close()
     params = {}
-    print(jobs)
     params["title"] = "Журнал работ"
-    #params["static_css"] = url_for('static', filename="css/")
-    #params["static_img"] = url_for('static', filename="img/")
+    # params["static_css"] = url_for('static', filename="css/")
+    # params["static_img"] = url_for('static', filename="img/")
     params["jobs"] = jobs
     return render_template("jobs.html", **params)
 
@@ -46,10 +48,12 @@ def journal():
 def name(session, idd):
     for i in session.query(User).filter(User.id == idd):
         return i.name
-    
+
+
 def surname(session, idd):
     for i in session.query(User).filter(User.id == idd):
         return i.surname
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def reqister():
@@ -82,18 +86,14 @@ def reqister():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
+def lin():
+    form = RegisterForm()
     if form.validate_on_submit():
+        print('bruh')
         db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.email == form.email.data).first()
-        if user and user.check_password(form.password.data):
-            login_user(user, remember=form.remember_me.data)
-            return redirect("http://127.0.0.1:5000/")
-        return render_template('login.html',
-                                   message="Неправильный логин или пароль",
-                                   form=form)
-    return render_template('login.html', title='Авторизация', form=form)
+        
+        return redirect('/')
+    return render_template('log.html', title='Регистрация', form=form)
 
 
 def main():
@@ -103,4 +103,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-#/register
+# /register
