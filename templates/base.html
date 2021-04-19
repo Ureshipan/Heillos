@@ -28,7 +28,7 @@
         <a class="navbar-brand" href="/albums">Все альбомы</a>
         {% if current_user.is_authenticated %}
         <a class="navbar-brand">Вы вошли как {{ current_user.name }}</a>
-        <a class="navbar-brand" href="/logout">Выйти</a>
+        <a class="btn btn-danger " href="/logout">Выйти</a>
         {% else %}
         <p>
         <a class="btn btn-danger " href="/register">Зарегистрироваться</a>
